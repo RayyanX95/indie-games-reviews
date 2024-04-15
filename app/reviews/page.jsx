@@ -1,8 +1,9 @@
 import React from 'react'
+import Heading from '../../components/Heading'
 
 const page = () => {
   return (
-    <h1>reviews page</h1>
+    <Heading>reviews page</Heading>
   )
 }
 

@@ -1,21 +1,18 @@
 import React from 'react'
 import Link from 'next/link';
 
+import './globals.css'
+import NavBar from '../components/NavBar';
+
 const layout = ({ children }) => {
   return (
     <html lang='en'>
-      <body>
+      <body className=' px-2 flex flex-col py-2 min-h-screen'>
         <header>
-          <nav>
-            <ul>
-              <li><Link href='/'>Home</Link></li>
-              <li><Link href='/about' prefetch={false}>About</Link></li>
-              <li><Link href='/reviews'>Reviews</Link></li>
-            </ul>
-          </nav>
+          <NavBar />
         </header>
-        <main>{children}</main>
-        <footer>[Footer]</footer>
+        <main className=' flex-grow py-3'>{children}</main>
+        <footer className=' border-t text-orange-800'>[Footer]</footer>
       </body>
     </html>
   )
