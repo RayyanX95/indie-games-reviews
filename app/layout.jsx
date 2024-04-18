@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 import './globals.css'
 import NavBar from '../components/NavBar';
-import { orbitron } from './fonts';
+import { exo2, orbitron } from './fonts';
 
 const layout = ({ children }) => {
   return (
-    <html lang='en' className={orbitron.variable}>
-      <body className=' px-2 flex flex-col py-2 min-h-screen'>
+    <html lang='en' className={`${exo2.variable} ${orbitron.variable}`}>
+      <body className=' px-2 flex flex-col py-2 min-h-screen bg-orange-100'>
         <header>
           <NavBar />
         </header>

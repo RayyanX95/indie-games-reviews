@@ -1,12 +1,17 @@
 import React from 'react'
 import Heading from '@/components/Heading'
+import { marked } from 'marked';
+import { readFile } from 'node:fs/promises';
 
-const HollowKnight = () => {
+const HollowKnight = async () => {
+  const text = await readFile('./content/reviews/stardew-valley.md', 'utf8');
+  const html = marked(text)
+
   return (
     <>
       <Heading>HollowKnight</Heading>
       <img src='/images/hollow-knight.jpg' className=' mb-2 rounded' width={640} height={360} alt='' />
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae odio rerum totam voluptatem vel saepe aut, molestiae, eum accusantium esse suscipit voluptas rem iste facere nisi nostrum dolores blanditiis voluptatum.</p>
+      <article dangerouslySetInnerHTML={{ __html: html }} className=' prose prose-stone' />
     </>
   )
 }
