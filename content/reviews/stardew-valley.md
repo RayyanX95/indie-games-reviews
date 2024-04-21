@@ -1,3 +1,9 @@
+---
+title: "Stardew Valley"
+date: "2024-04-15"
+image: "/images/stardew-valley.jpg"
+---
+
 <!-- @format -->
 
 # Title
