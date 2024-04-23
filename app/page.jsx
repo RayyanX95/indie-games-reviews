@@ -3,7 +3,11 @@ import Heading from '@/components/Heading'
 import Link from 'next/link'
 import { getFeaturedReview } from '@/lib/reviews'
 
-const page = async () => {
+export const metadata = {
+  title: 'Reviews',
+}
+
+const HomePage = async () => {
   const featuredReview = await getFeaturedReview();
   return (
     <>
@@ -24,4 +28,4 @@ const page = async () => {
   )
 }
 
-export default page
+export default HomePage

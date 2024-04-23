@@ -1,5 +1,5 @@
 import Heading from '@/components/Heading'
-import { getReview } from '@/lib/reviews';
+import { getReview, getSlugs } from '@/lib/reviews';
 import React from 'react';
 
 //* Example:  app/reviews/[slug]/page.js
@@ -18,12 +18,49 @@ import React from 'react';
 //   ];
 // }
 
+const metadataImages = {
+  "hellblade": "https://upload.wikimedia.org/wikipedia/en/d/d4/Hellblade_-_Senua%27s_Sacrifice.jpg",
+  "hollow-knight": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Hollow_Knight_first_cover_art.webp/274px-Hollow_Knight_first_cover_art.webp.png",
+  "stardew-valley": "https://upload.wikimedia.org/wikipedia/en/f/fd/Logo_of_Stardew_Valley.png"
+}
+
 
 export async function generateStaticParams() {
-  return [
-    { slug: 'hellblade' },
-    { slug: 'hollow-knight' },
-  ]
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+//! Has the same props passed to the component
+export async function generateMetadata({ params: { slug } }) {
+  const review = await getReview(slug);
+
+  return {
+    title: review.title,
+    openGraph: {
+      title: review.title,
+      description: review.body.slice(0, 200),
+      url: 'https://iknwoly.com',
+      siteName: 'Indie Game',
+      images: [
+        {
+          url: metadataImages[slug], // Must be an absolute URL
+          width: 800,
+          height: 600,
+        },
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: review.title,
+      description: review.body.slice(0, 200),
+      siteId: '1467726470533754880',
+      creator: 'Ibrahim AlRayyan',
+      creatorId: 'rayyanx95',
+      images: metadataImages[slug], // Must be an absolute URL
+    },
+  };
 }
 
 const ReviewPage = async ({ params: { slug } }) => {
