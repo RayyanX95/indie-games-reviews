@@ -1,4 +1,5 @@
 import Heading from '@/components/Heading'
+import ShareLinkButton from '@/components/ShareLinkButton';
 import { getReview, getSlugs } from '@/lib/reviews';
 import React from 'react';
 
@@ -70,6 +71,10 @@ const ReviewPage = async ({ params: { slug } }) => {
   return (
     <>
       <Heading>{title}</Heading>
+      <div className=' flex gap-2 p-2'>
+        <p className=' italic text-gray-500'>{date}</p>
+        <ShareLinkButton />
+      </div>
       <img src={image} className=' mb-2 rounded' width={640} height={360} alt="" />
 
       <article dangerouslySetInnerHTML={{ __html: body }} className=' prose prose-stone' />
