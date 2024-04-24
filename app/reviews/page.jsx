@@ -1,5 +1,4 @@
 import React from 'react'
-import Heading from '../../components/Heading'
 import Link from 'next/link'
 import { getReviews } from '@/lib/reviews'
 

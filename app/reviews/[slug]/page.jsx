@@ -35,8 +35,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
 
+  /** @type { import('next').Metadata} */
   return {
     title: review.title,
+    keywords: ['indie', 'games', 'reviews', 'hellblade', 'hollow knight', 'stardew Valley',],
+
     openGraph: {
       title: review.title,
       description: review.body.slice(0, 200),

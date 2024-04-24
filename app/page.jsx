@@ -5,6 +5,7 @@ import { getFeaturedReview } from '@/lib/reviews'
 
 export const metadata = {
   title: 'Reviews',
+  description: 'Only the best indie games, reviewed for you. Stay tuned to know the latest about the indies games updates and reviews'
 }
 
 const HomePage = async () => {
@@ -12,7 +13,7 @@ const HomePage = async () => {
   return (
     <>
       <Heading>page</Heading>
-      <p className='my-1'>ONly the best indie games, reviewed for you.</p>
+      <p className='my-1'>Only the best indie games, reviewed for you.</p>
 
       <div className=" bg-slate-100 border rounded shadow hover:shadow-xl">
         <Link className=' flex flex-col sm:flex-row gap-2' href={`/reviews/${featuredReview.slug}`}>
