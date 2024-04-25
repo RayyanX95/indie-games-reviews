@@ -4,6 +4,7 @@ import { getReviews } from '@/lib/reviews'
 
 const ReviewsPage = async () => {
   const reviews = await getReviews();
+  // console.log('reviews', reviews)
 
   return (
     <ul className="flex flex-row flex-wrap gap-3">
