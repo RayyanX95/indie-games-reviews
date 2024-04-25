@@ -3,12 +3,12 @@ import Link from 'next/link'
 import { getReviews } from '@/lib/reviews'
 
 const ReviewsPage = async () => {
-  const reviews = await getReviews();
-  // console.log('reviews', reviews)
+  const review = await getReviews();
+  console.log('[ReviewPage] review', review);
 
   return (
     <ul className="flex flex-row flex-wrap gap-3">
-      {reviews.map(review => (
+      {review.map(review => (
         <li className="bg-white border rounded shadow w-80 hover:shadow-xl">
           <Link href={`/reviews/${review.slug}`}>
             <img src={review.image} alt=""
