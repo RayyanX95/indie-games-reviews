@@ -1,6 +1,7 @@
 import Heading from "@/components/Heading";
 import ShareLinkButton from "@/components/ShareLinkButton";
 import { getReview, getSlugs } from "@/lib/reviews";
+import Image from "next/image";
 import React from "react";
 
 //* Example:  app/reviews/[slug]/page.js
@@ -92,7 +93,7 @@ const ReviewPage = async ({ params: { slug } }) => {
         <p className=" italic text-gray-500">{date}</p>
         <ShareLinkButton />
       </div>
-      <img
+      <Image
         src={image}
         className=" mb-2 rounded"
         width={640}
