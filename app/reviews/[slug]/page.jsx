@@ -26,8 +26,13 @@ const metadataImages = {
 }
 
 
+// export async function generateStaticParams() {
+//   const slugs = await getSlugs();
+//   return slugs.map((slug) => ({ slug }));
+// }
 export async function generateStaticParams() {
   const slugs = await getSlugs();
+  console.log('[ReviewPage] generateStaticParams:', slugs);
   return slugs.map((slug) => ({ slug }));
 }
 
