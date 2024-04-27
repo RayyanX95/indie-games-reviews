@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getReviews } from "@/lib/reviews";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 const ReviewsPage = async () => {
   const review = await getReviews(6);
   console.log("[ReviewPage] review", review);
