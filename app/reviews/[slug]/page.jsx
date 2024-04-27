@@ -2,6 +2,7 @@ import Image from "next/image";
 import Heading from "@/components/Heading";
 import ShareLinkButton from "@/components/ShareLinkButton";
 import { getReview, getSlugs } from "@/lib/reviews";
+import { notFound } from "next/navigation";
 
 // export const dynamicParams = true; // true | false,
 
@@ -15,6 +16,11 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
+
+  if (!review) {
+    notFound();
+  }
+
   return {
     title: review.title,
   };
@@ -23,6 +29,11 @@ export async function generateMetadata({ params: { slug } }) {
 export default async function ReviewPage({ params: { slug } }) {
   const review = await getReview(slug);
   // console.log('[ReviewPage] review', review);
+
+  if (!review) {
+    notFound();
+  }
+
   return (
     <>
       <Heading>{review.title}</Heading>
