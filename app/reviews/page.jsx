@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getReviews } from "@/lib/reviews";
 import Image from "next/image";
 
+export const revalidate = 30; // seconds
+
 export const dynamic = "force-dynamic";
 
 const ReviewsPage = async () => {
