@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 const ReviewsPage = async () => {
   const review = await getReviews(6);
-  console.log("[ReviewPage] review", review);
+  // console.log("[ReviewPage] review", review);
 
   return (
     <ul className="flex flex-row flex-wrap gap-3">
