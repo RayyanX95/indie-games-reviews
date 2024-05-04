@@ -1,33 +1,21 @@
-import React from "react";
-import Link from "next/link";
+import NavLink from "./NavLink";
 
-const NavBar = () => {
+export default function NavBar() {
   return (
     <nav>
-      <ul className=" flex gap-2">
-        <li>
-          <Link href="/" className="text-orange-800 hover:underline">
-            Home
-          </Link>
+      <ul className="flex gap-2">
+        <li className="font-bold font-orbitron">
+          <NavLink href="/">Indie Gamer</NavLink>
+        </li>
+        <li className="ml-auto">
+          <NavLink href="/reviews">Reviews</NavLink>
         </li>
         <li>
-          <Link
-            href="/about"
-            className="text-orange-800 hover:underline"
-            prefetch={false}
-          >
+          <NavLink href="/about" prefetch={false}>
             About
-          </Link>
+          </NavLink>
         </li>
-        <li>
-          <Link href="/reviews" className="text-orange-800 hover:underline">
-            Reviews
-          </Link>
-        </li>
-        <li>Toggle Theme</li>
       </ul>
     </nav>
   );
-};
-
-export default NavBar;
+}
