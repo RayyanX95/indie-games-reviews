@@ -1,8 +1,6 @@
-import React from "react";
-
-import "./globals.css";
 import NavBar from "../components/NavBar";
 import { exo2, orbitron } from "./fonts";
+import "./globals.css";
 
 // import { Metadata } from 'next'
 
@@ -19,7 +17,7 @@ export const metadata /*: Metadata*/ = {
     siteName: "Indie Game",
     images: [
       {
-        url: "https://www.iknowly.com/iknowly-logo/new-logo.png", // Must be an absolute URL
+        url: "https://indie-games-reviews.vercel.app/_next/image?url=https%3A%2F%2Fnext-reviews-cms.encoded.io%2Fuploads%2Ffall_guys_9f9b386677.jpg&w=1920&q=75", // Must be an absolute URL
         width: 800,
         height: 600,
       },
