@@ -1,18 +1,23 @@
-import React from "react";
-import Link from "next/link";
-import { getReviews } from "@/lib/reviews";
-import Image from "next/image";
-import Heading from "@/components/Heading";
 import PaginationBar from "@/components/PaginationBar";
 import SearchBox from "@/components/SearchBox";
+import { reviewsPageMetadata } from "@/lib/generateMetadataFactory";
+import { getReviews } from "@/lib/reviews";
+import Image from "next/image";
+import Link from "next/link";
+
+//! Has the same props passed to the component
+export async function generateMetadata({ searchParams }) {
+  console.log("[generateMetadata] searchParams:", searchParams);
+  const page = parsePageParam(searchParams.page);
+  return await reviewsPageMetadata(searchParams);
+}
 
 // export const revalidate = 30; // seconds
 
 // export const dynamic = "force-dynamic";
-const PAGE_SIZE = 6;
+export const PAGE_SIZE = 6;
 
 const ReviewsPage = async ({ searchParams }) => {
-  console.log("searchParams", searchParams);
   const page = parsePageParam(searchParams.page);
   const { reviews, pageCount } = await getReviews(PAGE_SIZE, page);
   // console.log("[ReviewPage] review", review);
@@ -50,7 +55,7 @@ const ReviewsPage = async ({ searchParams }) => {
 
 export default ReviewsPage;
 
-function parsePageParam(paramValue) {
+export function parsePageParam(paramValue) {
   if (paramValue) {
     const page = parseInt(paramValue);
     if (isFinite(page) && page > 0) {

@@ -1,7 +1,8 @@
-import Image from "next/image";
 import Heading from "@/components/Heading";
 import ShareLinkButton from "@/components/ShareLinkButton";
+import { slugPageMetadata } from "@/lib/generateMetadataFactory";
 import { getReview, getSlugs } from "@/lib/reviews";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 // export const dynamicParams = true; // true | false,
@@ -14,16 +15,10 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+//! Has the same props passed to the component
 export async function generateMetadata({ params: { slug } }) {
-  const review = await getReview(slug);
-
-  if (!review) {
-    notFound();
-  }
-
-  return {
-    title: review.title,
-  };
+  console.log("[generateMetadata] slug:", slug);
+  return await slugPageMetadata(slug);
 }
 
 export default async function ReviewPage({ params: { slug } }) {
