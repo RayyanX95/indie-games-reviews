@@ -7,7 +7,7 @@ import Link from "next/link";
 // export const revalidate = 30; // seconds
 export default async function HomePage() {
   const { reviews } = await getReviews(3);
-  // console.log('[HomePage] rendering');
+  console.log("[HomePage] rendering");
   return (
     <>
       <Heading>Indie Gamer</Heading>
