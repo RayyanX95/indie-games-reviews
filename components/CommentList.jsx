@@ -1,12 +1,8 @@
+import { getComments } from "@/lib/comments";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
-const comments = [
-  { id: "1", user: "Alice", message: "Love this game!" },
-  { id: "2", user: "Bob", message: "Ok but not really my genre" },
-  { id: "3", user: "Charlie", message: "Can't stop playing it" },
-];
-
-export default function CommentList() {
+export default async function CommentList({ slug }) {
+  const comments = await getComments(slug);
   return (
     <ul className="border mt-3 rounded">
       {comments.map((comment) => (
